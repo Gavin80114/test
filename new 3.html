@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>顯示留言</title>
+</head>
+<body>
+    <h1>用戶留言</h1>
+    <div id="user-message"></div>
+
+    <script>
+        // 在這個頁面上顯示用戶留言
+        var userMessage = localStorage.getItem('userMessage');
+        if (userMessage) {
+            document.getElementById('user-message').innerHTML = "<p>" + userMessage + "</p>";
+        } else {
+            document.getElementById('user-message').innerHTML = "<p>No message available</p>";
+        }
+    </script>
+</body>
+</html>

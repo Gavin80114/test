@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健身和健康指南網站</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 0.5em;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 0 0.2em;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        main {
+            padding: 1em;
+            margin: 20px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* 新增的圖片響應性樣式 */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin-top: 20px;
+        }
+        .image-gallery a {
+            margin: 10px;
+            flex: 0 1 calc(30% - 20px); /* 根據你的布局調整寬度 */
+            max-width: 300px; /* 圖片的最大寬度 */
+            text-align: center;
+            text-decoration: none;
+        }
+        .image-gallery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px; /* 添加圓角 */
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2); /* 添加細微陰影 */
+        }
+        h2 {
+            margin-bottom: 15px;
+        }
+        select {
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <body>
+    <header>
+        <h1>健身和健康指南網站</h1>
+    </header>
+    <nav>
+        <a onclick="openTab('tab1')">相關文章</a>
+        <a onclick="openTab('tab2')">健身計劃和教學</a>
+        <a onclick="openTab('tab3')">營養建議</a>
+		<a onclick="openTab('tab4')">健康工具</a>
+		
+    </nav>
+    <main>
+        <div id="tab1" class="tab-content active">
+            <h2>相關文章</h2>
+			<div class="image-gallery">
+            <a href="https://heho.com.tw/"><img src="image1.jpg" alt="Image 1"></a>
+			<a href="https://health99.hpa.gov.tw/"><img src="image2.jpg" alt="Image 2"></a>
+			<a href="https://www.edh.tw/"><img src="image3.jpg" alt="Image 3"></a>
+			<!-- 第一行 -->
+			<a href="https://health.ltn.com.tw/"><img src="image4.jpg" alt="Image 4"></a>
+			<a href="https://health.businessweekly.com.tw/new"><img src="image5.jpg" alt="Image 5"></a>
+			<a href="https://www.dradvice.com/ec99/rwd1031/category.asp?category_id=99"><img src="image6.jpg" alt="Image 6"></a>
+			<!-- 第二行 -->
+			</div>
+        </div>
+        <div id="tab2" class="tab-content">
+            <h2><a href="new 2.html">健身計劃</a></h2>
+            <div class="image-gallery">
+            <a href="https://helloyishi.com.tw/fitness/fitness-safety-tips/prevent-injury-with-right-running-technique/"><img src="01.jpg" alt="01"></a>
+			<a href="https://www.decathlon.com.hk/zh/c/htc/_1857e08a-88f3-4570-a711-3e1263e5b359"><img src="02.jpg" alt="02"></a>
+			<a href="https://blog.decathlon.tw/yu-qiu-qing-song-shang-shou-yu-qiu-ji-qiao-wan-zheng-gong-lue"><img src="03.jpg" alt="03"></a>
+			<h2><a href="new 3.html">其他使用者的心得與教學</a></h2>
+			<label for="message">留言：</label>
+			<textarea id="message" rows="4" cols="50"></textarea>
+			<br>
+			<button onclick="saveMessage()">儲存留言</button>
+
+			<script>
+			function saveMessage() {
+				var message = document.getElementById("message").value;
+
+				// 儲存留言到本地存儲，可以使用 localStorage 或者 Cookies
+				localStorage.setItem('userMessage', message);
+
+				// 跳轉到下一個 HTML 頁面
+				window.location.href = 'new 3.html';
+			}
+			</script>
+			</div>
+        </div>
+        <div id="tab3" class="tab-content">
+		<h2>營養建議</h2>
+		<select id="healthTools" name="healthTools" onchange="changeVideo(this.value)">
+        <option value="1">給休閒者</option>
+        <option value="2">給想減肥者</option>
+        <option value="3">給健身者</option>
+		</select>
+		<div id="video-container"></div>
+
+		<script>
+        function changeVideo(value) {
+            var videoContainer = document.getElementById('video-container');
+            var videoLink;
+
+            switch (value) {
+                case '1':
+                    videoLink = 'https://www.youtube.com/embed/7ycbPf6m-7c';
+                    break;
+                case '2':
+                    videoLink = 'https://www.youtube.com/embed/vJhiPXsMFjI';
+                    break;
+                case '3':
+                    videoLink = 'https://www.youtube.com/embed/R0C-S9ZOhzE';
+                    break;
+                default:
+                    videoLink = 'https://www.youtube.com/embed/7ycbPf6m-7c';
+            }
+
+            videoContainer.innerHTML = '<iframe width="560" height="315" src="' + videoLink + '" frameborder="0" allowfullscreen></iframe>';
+        }
+		</script>
+	</div>
+		<div id="tab4" class="tab-content ">
+		
+            <h2>BMI計算機</h2>
+			<form id="bmiForm">
+        <label for="weight">體重（公斤）：</label>
+        <input type="number" id="weight" required><br>
+        
+        <label for="height">身高（公分）：</label>
+        <input type="number" id="height" required><br>
+        <button type="button" onclick="calculateBMI()">計算</button>
+		
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateBMI() {
+            var weight = parseFloat(document.getElementById("weight").value);
+            var height = parseFloat(document.getElementById("height").value) / 100; // 轉換為米
+
+            if (weight > 0 && height > 0) {
+                var bmi = weight / (height * height);
+                document.getElementById("result").innerHTML = "你的BMI為：" + bmi.toFixed(2);
+            } else {
+                document.getElementById("result").innerHTML = "請輸入有效的數字";
+            }
+        }
+    </script>
+		<h2><a href="new 4.html">營養計算器</a></h2>
+		<h2><a href="new 4.html">運動計劃生成器</a></h2>
+		<img src="bmi.jpg" style="float:right;"/>
+			<form>
+        <h2>其他健康工具</h2>
+        <select id="healthTools" name="healthTools">
+            <option value="bmi">飲食行為測量</option>
+            <option value="stress">壓力測試</option>
+            <option value="hypertension">高血壓檢測</option>
+            <option value="cardiovascular">心血管健康</option>
+        </select>
+		
+    </form>
+
+    <script>
+        document.getElementById('healthTools').addEventListener('change', function() {
+            var selectedTool = this.value;
+
+            // 根據選擇的健康工具，導向到相應的連結
+            if (selectedTool === 'bmi') {
+                window.location.href = 'https://health99.hpa.gov.tw/oe;
+            } else if (selectedTool === 'stress') {
+                window.location.href = 'https://health99.hpa.gov.tw/op;
+            } else if (selectedTool === 'hypertension') {
+                window.location.href = 'https://health99.hpa.gov.tw/oh;
+            } else if (selectedTool === 'cardiovascular') {
+                window.location.href = 'https://health99.hpa.gov.tw/ochd;
+            }
+        });
+    </script>
+			
+        </div>
+		<div id="tab5" class="tab-content ">
+		<h2>Login</h2>
+    <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="button" onclick="login()">Login</button>
+    </form>
+</div>
+
+    </main>
+    
+    <script>
+        function openTab(tabName) {
+            var i, tabContent;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+        }
+		function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // 在實際應用中，應該使用AJAX將用戶名和密碼發送到後端進行驗證
+        // 這裡僅提供簡單的客戶端檢查
+        if (username === "user" && password === "pass") {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        } else {
+            alert("Invalid username or password");
+        }
+    }
+
+    function changeTab(tabNumber) {
+        // 隱藏所有分頁內容
+        var tabs = document.getElementsByClassName("content");
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].style.display = "none";
+        }
+
+        // 顯示選定的分頁內容
+        document.getElementById("tab" + tabNumber).style.display = "block";
+
+        // 在分頁標籤上添加活動樣式
+        var tabButtons = document.getElementsByClassName("tab");
+        for (var i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].classList.remove("active-tab");
+        }
+        tabButtons[tabNumber - 1].classList.add("active-tab");
+    }
+    </script>
+	 
+</body>
+</html>

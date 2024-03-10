@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>運動計劃生成器</title>
+</head>
+<body>
+    <h1>運動計劃生成器</h1>
+    <label for="exercise-type">選擇運動類型：</label>
+    <select id="exercise-type">
+        <option value="running">跑步</option>
+        <option value="cycling">騎自行車</option>
+        <option value="swimming">游泳</option>
+        <!-- 添加其他運動類型 -->
+    </select>
+    <br>
+    <label for="duration">運動時間（分鐘）：</label>
+    <input type="number" id="duration">
+    <br>
+    <button onclick="generateExercisePlan()">生成運動計劃</button>
+    <div id="exercise-plan"></div>
+
+    <script>
+        function generateExercisePlan() {
+            var exerciseType = document.getElementById("exercise-type").value;
+            var duration = document.getElementById("duration").value;
+
+            var exercisePlan = "您的運動計劃：<br>";
+            if (exerciseType === "running") {
+                exercisePlan += "跑步 " + duration + " 分鐘。";
+            } else if (exerciseType === "cycling") {
+                exercisePlan += "騎自行車 " + duration + " 分鐘。";
+            } else if (exerciseType === "swimming") {
+                exercisePlan += "游泳 " + duration + " 分鐘。";
+            }
+            // 可根據需要添加其他運動類型的計劃
+
+            document.getElementById("exercise-plan").innerHTML = exercisePlan;
+        }
+    </script>
+</body>
+</html>

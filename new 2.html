@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增使用者名稱、身高和體重到資料庫</title>
+</head>
+<body>
+
+<!-- 使用者名稱、身高和體重新增表單 -->
+<h2>新增使用者名稱、身高和體重到資料庫</h2>
+<form action="add_data.php" method="post">
+    <label for="username">使用者名稱:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="height">身高 (公分):</label><br>
+    <input type="number" id="height" name="height"><br>
+    <label for="weight">體重 (公斤):</label><br>
+    <input type="number" id="weight" name="weight"><br><br>
+	<label for="sports">運動種類:</label><br>
+    <input type="text" id="sports" name="sports"><br>
+    <label for="time">運動時間 (00:00:00):</label><br>
+    <input type="text" id="time" name="time" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" placeholder="hh:mm:ss"><br><br>
+    <input type="submit" value="新增到資料庫">
+</form>
+
+</body>
+</html>

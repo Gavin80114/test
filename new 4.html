@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>營養計算器</title>
+</head>
+<body>
+    <h1>營養計算器</h1>
+    <label for="protein">蛋白質（克）：</label>
+    <input type="number" id="protein">
+    <br>
+    <label for="carbs">碳水化合物（克）：</label>
+    <input type="number" id="carbs">
+    <br>
+    <label for="fat">脂肪（克）：</label>
+    <input type="number" id="fat">
+    <br>
+    <button onclick="calculateCalories()">計算總熱量</button>
+    <p id="total-calories"></p>
+
+    <script>
+        function calculateCalories() {
+            var protein = parseFloat(document.getElementById("protein").value);
+            var carbs = parseFloat(document.getElementById("carbs").value);
+            var fat = parseFloat(document.getElementById("fat").value);
+
+            var totalCalories = protein * 4 + carbs * 4 + fat * 9; // 熱量計算公式
+
+            document.getElementById("total-calories").innerHTML = "總熱量：" + totalCalories + " 卡路里";
+        }
+    </script>
+</body>
+</html>
