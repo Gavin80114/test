@@ -1,4 +1,12 @@
-// 初始化 Firebase
+// firebase.utils.js
+import {
+  getAuth,
+  signInWithRedirect,
+  signInWithPopup,
+  googleAuthProvider,
+} from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+
 const firebaseConfig = {
   apiKey: "AIzaSyBZ0cidn0hbZQsokFZwu4uRDPksk9Ys9sk",
   authDomain: "test-addd1.firebaseapp.com",
@@ -8,26 +16,13 @@ const firebaseConfig = {
   appId: "1:308863996580:web:9750cea4a0b5ba1c69cc31",
   measurementId: "G-DSZB9LFZ36"
 };
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
 
-firebase.initializeApp(firebaseConfig);
+const provider = new googleAuthProvider();
+provider.setCustomParameters({
+  prompt: 'select_account',
+});
 
-// 登入函數
-function login() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-        // 登入成功
-        console.log("登入成功");
-        const user = userCredential.user;
-        // 在此處執行用戶登入後的操作，例如導航到另一個頁面
-    })
-    .catch((error) => {
-        // 登入失敗
-        console.error("登入失敗", error);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // 在此處處理登入失敗的情況，例如顯示錯誤消息給用戶
-    });
-}
+export const auth = getAuth();
+export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
